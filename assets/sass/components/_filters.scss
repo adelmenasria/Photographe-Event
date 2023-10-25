@@ -1,0 +1,42 @@
+/* Filters */
+.filters {
+  display: flex;
+  margin-bottom: 39px;
+  overflow-x: auto;
+
+  /* WebKit */
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+
+  scrollbar-width: none; /* Firefox */
+
+
+  .filter {position: relative;}
+
+  .filter:nth-child(2) {margin-left: 36px;}
+
+  .filter:nth-child(3) {margin-left: auto;}
+
+  .filter-category,
+  .filter-format,
+  .filter-order {
+    height: 43px;
+    width: 260px;
+    padding: 0 18px;
+    font-family: 'poppins';
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.36px;
+    color: $color-secondary;
+    border-radius: 8px;
+    border: 1.3px solid $color-outline;
+    background: transparent;
+    appearance: none; /* Efface la flèche par défaut pour certains navigateurs */
+    -webkit-appearance: none; /* Pour Safari et Chrome */
+    -moz-appearance: none; /* Pour Firefox */
+  }
+}

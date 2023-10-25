@@ -1,0 +1,60 @@
+/* Hamburger */
+.hamburger {
+  display: none;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  transition: transform $hamburger-duration;
+  background-color: $hamburger-bg;
+
+  /* middle line */
+  .hamburger-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: $hamburger-lines-width;
+    height: $hamburger-lines-thickness;
+    background-color: $hamburger-color;
+    transform: translateX(-50%) translateY(-50%); /* centering trickz */
+
+    /* top and bottom lines */
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: $hamburger-lines-width;
+      height: $hamburger-lines-thickness;
+      background-color: $hamburger-color;
+      transition: transform $hamburger-duration;
+    }
+
+    // Define space beetwin top & bottom lines
+    &::before {transform: translateY(-9px);}
+    &::after {transform: translateY(9px);}
+  }
+}
+
+.hamburger {
+  /* cross transformation from center **/
+  .hamburger-icon::before,
+  .hamburger-icon::after {transform-origin: 50% 50%;}
+
+  /* transition middle line */
+  .hamburger-icon {transition: background 0.1s;}
+}
+
+.hamburger.is-opened {
+  /* Hide middle line via bg: transparent & show cross via translate */
+  .hamburger-icon {background: transparent;}
+  .hamburger-icon::before {transform: translateY(0) rotate(45deg);}
+  .hamburger-icon::after {transform: translateY(0) rotate(-45deg);}
+}

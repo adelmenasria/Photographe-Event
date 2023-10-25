@@ -1,0 +1,34 @@
+.photo-navigation  {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+
+  .photo-current-thumb {
+    position: relative;
+    width: 81px;
+    height: 71px;
+  }
+
+  .photo-arrows {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+
+    .hover-thumb {
+      position: absolute;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+
+      img {
+        width: 81px;
+        height: 71px;
+      }
+    }
+
+    .hover-thumb.left {transform: translateX(-100%);}
+    .hover-thumb.right {transform: translateX(-60%);}
+
+    .prev-photo a:hover + .hover-thumb,
+    .next-photo a:hover + .hover-thumb {opacity: 1;}
+  }
+}

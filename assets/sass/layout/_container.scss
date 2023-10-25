@@ -1,0 +1,19 @@
+.container {
+  max-width: $container;
+  margin: 0 auto;
+  padding: 0;
+}
+
+// Si l'on veut figer une largeur maximale au site
+// .site-container {
+//   max-width: $site-container;
+//   margin: 0 auto;
+// }
+
+.container-fluid {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}

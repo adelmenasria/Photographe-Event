@@ -1,0 +1,56 @@
+@media (max-width: $breakpoint-mobile) {
+
+  // Home page
+  .home-page {
+    .container {
+      padding-top: 35px;
+      width: 100%;
+    }
+
+    .hero {
+      height: 40vh;
+      .hero-title {font-size: 36px;}
+    }
+  }
+
+  // Filters
+  .filters {
+    .filter-category,
+    .filter-format,
+    .filter-order {width: 270px;}
+  }
+
+  // Gallery
+  .gallery {
+    grid-template-columns: 1fr; // Changement de la grille (de 2 par défaut) à 1 colonne
+    &-item {height: 278px;}
+  }
+
+  // Single Photo page
+  .single-photo-page {padding-top: 20px;}
+
+  .single-photo-page.container {width: 100%;}
+
+  .single-photo {
+    &-wrapper {flex-direction: column-reverse;}
+    &-title {font-size: 46px;}
+    &-content {padding: 0 55px;}
+    &-img {padding: 0 55px;}
+    &-footer {
+      flex-direction: column;
+      gap: 15px;
+      padding: 24px 55px;
+      margin-bottom: 0;
+      .single-photo-footer-txt {margin-right: 0;}
+    }
+  }
+
+  .related-photos {
+    align-items: center;
+    gap: 20px;
+    padding: 25px 30px;
+    &-title {padding: 0 30px;}
+  }
+
+  .btn.view-all-photos {display: none;}
+}

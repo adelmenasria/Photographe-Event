@@ -1,0 +1,40 @@
+.home-page {
+  .container {
+    padding-top: 80px;
+    padding-bottom: 40px;
+    width: calc(100% - 60px);
+  }
+}
+
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 95vh;
+  background: url('../img/hero-home.jpg') center center / cover no-repeat;
+
+  &-title {
+    font-family: 'Space Mono';
+    font-size: 96px;
+    font-weight: 700;
+    font-style: italic;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 3px white;
+    text-stroke: 3px white;
+  }
+}
+
+/* Button Load more of gallery home */
+.load-more {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+}
+
+/* Disable button when no photo */
+#load-more:disabled {
+  background-color: #d3d3d3;
+  cursor: not-allowed;
+}

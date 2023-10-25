@@ -1,0 +1,16 @@
+.btn {
+  height: 50px;
+  width: 272px;
+  background: $color-bg-btn;
+  font-family: 'Space Mono';
+  font-size: 12px;
+  border: none;
+  border-radius: 2px;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    color: #fff;
+    background: $color-primary;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,11 @@
+@media (max-width: $breakpoint-laptop) {
+  // Home
+  .home-page {
+    .container {}
+  }
+  
+  // Hero
+  .hero {
+    &-title {font-size: 75px;}
+  }
+}
