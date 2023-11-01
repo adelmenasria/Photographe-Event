@@ -1,0 +1,11 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.col {flex: 1;}
+
+.col-1 {flex: 1;}   /* 1 part de l'espace disponible */
+.col-2 {flex: 2;}   /* 2 parts de l'espace disponible */
+.col-3 {flex: 3;}   /* ... et ainsi de suite */

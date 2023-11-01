@@ -1,0 +1,52 @@
+/* Button Menu Mobile */
+.btn-menu-mobile {
+  display: none;
+  position: relative;
+  padding: 0;
+  margin-right: 40px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  transition: transform $burger-duration;
+  background-color: $burger-bg;
+
+  &.is-cross {
+    .i-burger {background: transparent;} /* Hide middle line */
+    .i-burger::before {transform: translateY(0) rotate(45deg);}
+    .i-burger::after {transform: translateY(0) rotate(-45deg);}
+  }
+}
+/* hamburger icon */
+/* middle line */
+.i-burger {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: $burger-lines-width;
+  height: $burger-lines-thickness;
+  background-color: $burger-color;
+  transform: translateX(-50%) translateY(-50%); /* centering trickz */
+  transition: background 0.1s;
+
+  /* top and bottom lines */
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: $burger-lines-width;
+    height: $burger-lines-thickness;
+    background-color: $burger-color;
+    transition: transform $burger-duration;
+    transform-origin: 50% 50%;
+  }
+
+  // Space beetwin top & bottom lines
+  &::before {transform: translateY(-9px);}
+  &::after {transform: translateY(9px);}
+}

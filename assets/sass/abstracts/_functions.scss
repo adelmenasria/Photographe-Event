@@ -1,0 +1,9 @@
+@function adjust-brightness($color, $amount) {
+  @return mix(white, $color, $amount);
+}
+
+/*
+.element:hover {
+  background-color: adjust-brightness($primary-color, 20%);
+}
+*/

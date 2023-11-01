@@ -6,11 +6,11 @@
       padding-top: 35px;
       width: 100%;
     }
+  }
 
-    .hero {
-      height: 40vh;
-      .hero-title {font-size: 36px;}
-    }
+  .hero {
+    height: 40vh;
+    .hero-title {font-size: 36px;}
   }
 
   // Filters
@@ -52,5 +52,5 @@
     &-title {padding: 0 30px;}
   }
 
-  .btn.view-all-photos {display: none;}
+  .btn.btn--related-photos {display: none;}
 }

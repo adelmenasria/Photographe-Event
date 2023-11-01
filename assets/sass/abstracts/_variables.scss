@@ -12,12 +12,12 @@ $color-outline: #B8BBC2;
 $font-primary: 'Space Mono';
 $font-secondary: Poppins;
 
-// Hamburger (menu)
-$hamburger-bg: transparent;
-$hamburger-color: black;
-$hamburger-lines-width: 27px;
-$hamburger-lines-thickness: 1px;
-$hamburger-duration: 0.5s;
+// Burger (menu)
+$burger-bg: transparent;
+$burger-color: black;
+$burger-lines-width: 27px;
+$burger-lines-thickness: 1px;
+$burger-duration: 0.5s;
 
 // Container
 $container: 1148px;
@@ -26,9 +26,8 @@ $container: 1148px;
 $modal-box-width: 597px;
 $modal-box-height: 769px;
 
-// Breakpoints
+// Breakpoints - All breakpoints uses max-width for inherit styles
 $breakpoint-laptop: 1100px; // laptop
 $breakpoint-tablet-extra: 943px; // Tablet (landscape)
 $breakpoint-tablet: 868px; // Tablet (portrait)
 $breakpoint-mobile: 600px; // Mobile
-// All breakpoints uses max-width for inherit styles

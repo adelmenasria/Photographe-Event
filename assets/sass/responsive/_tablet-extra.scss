@@ -1,4 +1,7 @@
 @media (max-width: $breakpoint-tablet-extra) {
+  // Header
+  .header-nav {display: flex;}
+
   // Home
   .home-page {
     .container {width: 100%;}

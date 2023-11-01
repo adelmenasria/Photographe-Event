@@ -4,13 +4,8 @@
 const body = document.body;
 
 /*------------------------------------------*\
-  Header Menu Responsive
+  Functions
 \*------------------------------------------*/
-/**********
- * Cette fonction nous servira principalement à éviter le décalage provoqué par le overflow:hidden lorsque l'icone du menu hamburger est ouvert. 
- * En effet, lorsque le menu mobile est ouvert, la scrollbar disparaît et l'icone du hamburger subit ainsi un décallage indésirable en conséquance. 
- * Nous cherchons à obtenir la largeur de la scrollbar afin de pouvoir la resimuler lors de l'ouverture du menu, cela afin que l'icone du hamburger reste bien figée.
- ***********/
 function getScrollbarWidth() {
   const outer = document.createElement('div');
   outer.style.visibility = 'hidden';
@@ -26,32 +21,45 @@ function getScrollbarWidth() {
 
   return scrollbarWidth;
 }
+/**********
+ * Cette fonction nous sert à éviter le décalage provoqué par le bloquage du scroll (overflow:hidden) lorsque l'icone de menu burger est ouvert. 
+ * En effet, lorsque le menu mobile est ouvert, la scrollbar disparaît et l'icone burger subit un décallage indésirable en conséquance. 
+ * Nous cherchons à obtenir la largeur de la scrollbar afin de pouvoir la resimuler lors de l'ouverture du menu, afin que l'icone du burger reste bien figée.
+ ***********/
 
+/*------------------------------------------*\
+  Header Menu Mobile
+\*------------------------------------------*/
 document.addEventListener("DOMContentLoaded", function () {
-  const hamburger = document.getElementById("hamburger");
+  const burger = document.getElementById("btn-menu-mobile");
   const headerNav = document.getElementById("header-nav");
   const scrollbarWidth = getScrollbarWidth();
 
-  hamburger.addEventListener("click", function () {
+  burger.addEventListener("click", function () {
+    const isExpanded = burger.getAttribute('aria-expanded') === 'true'; // vérifier l'état actuel
+
     // Toggle menu
-    if (headerNav.style.display === "none" || headerNav.style.display === "") {
+    if (!isExpanded) { // Si le menu est fermé, ouvrez-le
       headerNav.style.display = "flex";
       body.classList.add("no-scroll"); // Bloquer le scroll
       body.style.marginRight = scrollbarWidth + 'px'; // Compenser la largeur de la scrollbar
-    } else {
+      burger.setAttribute('aria-expanded', 'true'); // Mettre à jour l'attribut aria-expanded
+    } else { // Si le menu est ouvert, fermez-le
       headerNav.style.display = "none";
       body.classList.remove("no-scroll"); // Réactiver le scroll
       body.style.marginRight = '0px'; // Retirer la compensation de la scrollbar
+      burger.setAttribute('aria-expanded', 'false'); // Mettre à jour l'attribut aria-expanded
     }
 
-    hamburger.classList.toggle("is-opened"); // Ajoute/retire la classe is-opened
+    burger.classList.toggle("is-cross"); // Ajoute/retire la classe is-cross pour transformer l'icone burger en croix
   });
 
-  // Resizing event (for reset some rules in responsive)
+  // Resizing event (reset)
   window.addEventListener("resize", function () {
     if (window.innerWidth > 680) {
       headerNav.removeAttribute("style");
-      hamburger.classList.remove("is-opened");
+      burger.classList.remove("is-cross");
+      burger.setAttribute('aria-expanded', 'false'); // Réinitialisez l'attribut aria-expanded lors du redimensionnement
     }
   });
 });
@@ -75,9 +83,9 @@ window.onclick = function (event) { // Using window.onclick to close the modal w
     body.classList.remove("no-scroll");
 
     // Reset reference field when modal is closed
-    const subjectField = document.querySelector('input[name="photo-ref"]');
-    if (subjectField) {
-      subjectField.value = '';
+    const refField = document.querySelector('input[name="photo-ref"]');
+    if (refField) {
+      refField.value = '';
     }
   }
 }
@@ -90,12 +98,12 @@ const btnModalSingle = document.getElementById('toggler-modal-single');
 // On s'assure que le bouton a bien été trouvé sur la page avant d'ajouter un gestionnaire d'événements.
 if (btnModalSingle) {
   btnModalSingle.addEventListener('click', function () {
-    const photoRefElement = document.getElementById('single-photo-reference'); // Retrieves the "reference" value of the photo
-    if (photoRefElement) {
-      const photoRef = photoRefElement.textContent.split(' : ')[1].trim();
-      const subjectField = document.querySelector('input[name="photo-ref"]');
-      if (subjectField) {
-        subjectField.value = photoRef; // Assigning this value to the form field
+    const refElement = document.getElementById('single-photo-reference'); // Retrieves the "reference" value of the photo
+    if (refElement) {
+      const photoRef = refElement.textContent.split(' : ')[1].trim();
+      const refField = document.querySelector('input[name="photo-ref"]');
+      if (refField) {
+        refField.value = photoRef; // Assigning this value to the form field
       }
     }
 

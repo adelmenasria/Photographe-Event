@@ -10,12 +10,14 @@
 <body <?php body_class(); ?> id="post-<?php the_ID(); ?>">
   <!--Header-->
   <header class="header">
-    <nav class="header-navbar">
-      <?php if (function_exists('the_custom_logo')) {
+    <div class="header-container">
+      <?php
+      if (function_exists('the_custom_logo')) {
         the_custom_logo();
-      } ?>
-      <button id="hamburger" class="hamburger" aria-controls="header-nav" aria-expanded="false" aria-label="Menu navigation">
-        <span class="hamburger-icon"></span>
+      }
+      ?>
+      <button id="btn-menu-mobile" class="btn-menu-mobile" aria-controls="header-nav" aria-expanded="false" aria-label="Menu principal">
+        <span class="i-burger"></span>
       </button>
       <nav id="header-nav" class="header-nav" role="navigation" aria-label="<?php __('Menu principal', 'PhotoEvent'); ?>">
         <?php
@@ -27,5 +29,5 @@
         ]);
         ?>
       </nav>
-    </nav>
+    </div>
   </header>

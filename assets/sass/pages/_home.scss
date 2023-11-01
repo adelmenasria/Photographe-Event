@@ -7,11 +7,11 @@
 }
 
 .hero {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-center;
   height: 95vh;
-  background: url('../img/hero-home.jpg') center center / cover no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
 
   &-title {
     font-family: 'Space Mono';

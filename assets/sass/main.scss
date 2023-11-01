@@ -1,34 +1,37 @@
-/* ABSTRACTS */
+/* Abstracts */
 @import 'abstracts/variables';
-@import 'abstracts/utilities';
+@import 'abstracts/mixins';
+@import 'abstracts/functions';
 
-/* BASE */
+/* Base */
 @import 'base/reset';
 @import 'base/fonts';
 @import 'base/typography';
+@import 'base/utilities';
 
-/* LAYOUT */
+/* Layout */
+@import 'layout/grid';
 @import 'layout/header';
 @import 'layout/footer';
 @import 'layout/container';
 
-/* COMPONENTS */
+/* Components */
 @import 'components/buttons';
 @import 'components/gallery';
 @import 'components/modal';
-@import 'components/hamburger';
 @import 'components/animations';
+@import 'components/btn-menu-mobile';
 @import 'components/icons';
 @import 'components/lightbox';
 @import 'components/filters';
 @import 'components/photo-navigation';
 
-/* PAGES */
+/* Pages */
 @import 'pages/home';
 @import 'pages/about';
 @import 'pages/single-photo';
 
-/* RESPONSIVE */
+/* Responsive */
 @import 'responsive/laptop';
 @import 'responsive/tablet-extra';
 @import 'responsive/tablet';

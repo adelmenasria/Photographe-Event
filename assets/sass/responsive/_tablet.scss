@@ -3,10 +3,11 @@
   .header {
     flex-wrap: wrap;
     padding: 0;
-    .hamburger {display: block;}
   }
 
-  .header-navbar {
+  .btn-menu-mobile {display: block;}
+
+  .header-container {
     flex-wrap: wrap;
     width: 100% !important;
   }
@@ -37,7 +38,7 @@
     .menu-item {font-size: 44px;}
   }
 
-  .hamburger {margin-right: 27px;}
+  .burger {margin-right: 27px;}
 
   // Hero (Home)
   .hero {
@@ -66,13 +67,16 @@
   .single-photo-footer {
     justify-content: space-between;
     padding: 25px 0;
+    
     &-txt {margin-right: 0;}
-    .photo-nav {display: none;}
   }
+
+  .photo-navigation {display: none;}
 
   // Footer
   .footer {
     padding: 44px 0 60px 0;
+
     &-nav-list {
       flex-direction: column;
       gap: 24px;

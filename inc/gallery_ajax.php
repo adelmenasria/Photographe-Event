@@ -1,11 +1,20 @@
 <?php
 
-add_action('wp_ajax_filter_photos', 'pe_filter_photos');
-add_action('wp_ajax_nopriv_filter_photos', 'pe_filter_photos');
+// Ajoutez l'action pour l'API REST
+add_action('rest_api_init', 'pe_register_gallery_route');
+// Fonction pour enregistrer la route
+function pe_register_gallery_route() {
+  register_rest_route('gallery/v1', '/photos/', array(
+    'methods' => WP_REST_Server::READABLE,
+    'callback' => 'pe_filter_photos_rest',
+    'permission_callback' => '__return_true' // Tout le monde peut accéder à cette route
+  ));
+}
 
-function pe_filter_photos() {
-  // Vérifie si le paramètre 'page' est défini. Si c'est la première fois, la valeur sera 1.
-  $page = isset($_POST['page']) ? absint($_POST['page']) : 1;
+
+function pe_filter_photos_rest($request) {
+  // Récupérer les données de la requête
+  $page = isset($request['page']) ? absint($request['page']) : 1;
 
   // Par défaut, nous voulons charger 8 photos et commencer depuis le début.
   $posts_count = 8;
@@ -27,20 +36,20 @@ function pe_filter_photos() {
   $tax_queries = array(); // Pour stocker toutes les requêtes taxonomiques
 
   // Filtrage par catégorie
-  if (!empty($_POST['category']) && $_POST['category'] != 'default-category') {
+  if (!empty($request['category']) && $request['category'] != 'default-category') {
     $tax_queries[] = array(
       'taxonomy' => 'photo_category',
       'field' => 'slug',
-      'terms' => $_POST['category']
+      'terms' => $request['category']
     );
   }
 
   // Filtrage par format
-  if (!empty($_POST['format']) && $_POST['format'] != 'default-format') {
+  if (!empty($request['format']) && $request['format'] != 'default-format') {
     $tax_queries[] = array(
       'taxonomy' => 'photo_format',
       'field' => 'slug',
-      'terms' => $_POST['format']
+      'terms' => $request['format']
     );
   }
 
@@ -54,8 +63,8 @@ function pe_filter_photos() {
   }
 
   // Tri des photos
-  if (!empty($_POST['sort']) && $_POST['sort'] != 'default-sort') {
-    switch ($_POST['sort']) {
+  if (!empty($request['sort']) && $request['sort'] != 'default-sort') {
+    switch ($request['sort']) {
       case 'new':
         $args['orderby'] = 'date';
         $args['order'] = 'DESC';
@@ -73,13 +82,13 @@ function pe_filter_photos() {
 
   if ($photos_query->have_posts()) :
     while ($photos_query->have_posts()) : $photos_query->the_post();
-      get_template_part('template-parts/gallery_item');
+      get_template_part('template-parts/gallery/gallery_item');
     endwhile;
     wp_reset_postdata();
   endif;
 
   $response = ob_get_clean();  // Récupérer le contenu capturé
-  echo $response;  // Echo pour renvoyer en tant que réponse AJAX
 
-  die();
+  // Retourner la réponse pour l'API REST
+  return new WP_REST_Response($response, 200);
 }
