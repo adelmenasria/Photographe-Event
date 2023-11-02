@@ -853,9 +853,6 @@ body.single-photo .header {
   }
 }
 @media (max-width: 943px) {
-  .header-nav {
-    display: flex;
-  }
   .home-page .container {
     width: 100%;
   }

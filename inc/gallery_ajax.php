@@ -1,8 +1,11 @@
 <?php
 
-// Ajoutez l'action pour l'API REST
+if (!defined('ABSPATH')) {
+  exit; // Interdire l'accès direct au fichier
+}
+
+// Enregistrement d'une nouvelle route pour l'API REST de WordPress
 add_action('rest_api_init', 'pe_register_gallery_route');
-// Fonction pour enregistrer la route
 function pe_register_gallery_route() {
   register_rest_route('gallery/v1', '/photos/', array(
     'methods' => WP_REST_Server::READABLE,
@@ -10,7 +13,6 @@ function pe_register_gallery_route() {
     'permission_callback' => '__return_true' // Tout le monde peut accéder à cette route
   ));
 }
-
 
 function pe_filter_photos_rest($request) {
   // Récupérer les données de la requête

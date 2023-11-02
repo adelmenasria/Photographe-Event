@@ -4,7 +4,7 @@
 const body = document.body;
 
 /*------------------------------------------*\
-  Functions
+  Header Menu Mobile
 \*------------------------------------------*/
 function getScrollbarWidth() {
   const outer = document.createElement('div');
@@ -21,31 +21,28 @@ function getScrollbarWidth() {
 
   return scrollbarWidth;
 }
-/**********
+/**
  * Cette fonction nous sert à éviter le décalage provoqué par le bloquage du scroll (overflow:hidden) lorsque l'icone de menu burger est ouvert. 
  * En effet, lorsque le menu mobile est ouvert, la scrollbar disparaît et l'icone burger subit un décallage indésirable en conséquance. 
  * Nous cherchons à obtenir la largeur de la scrollbar afin de pouvoir la resimuler lors de l'ouverture du menu, afin que l'icone du burger reste bien figée.
- ***********/
+ **/
 
-/*------------------------------------------*\
-  Header Menu Mobile
-\*------------------------------------------*/
 document.addEventListener("DOMContentLoaded", function () {
   const burger = document.getElementById("btn-menu-mobile");
-  const headerNav = document.getElementById("header-nav");
+  const menu = document.getElementById("header-nav");
   const scrollbarWidth = getScrollbarWidth();
 
   burger.addEventListener("click", function () {
     const isExpanded = burger.getAttribute('aria-expanded') === 'true'; // vérifier l'état actuel
 
     // Toggle menu
-    if (!isExpanded) { // Si le menu est fermé, ouvrez-le
-      headerNav.style.display = "flex";
+    if (!isExpanded) { // Si le menu est fermé, on l'ouvre
+      menu.style.display = "flex";
       body.classList.add("no-scroll"); // Bloquer le scroll
       body.style.marginRight = scrollbarWidth + 'px'; // Compenser la largeur de la scrollbar
       burger.setAttribute('aria-expanded', 'true'); // Mettre à jour l'attribut aria-expanded
-    } else { // Si le menu est ouvert, fermez-le
-      headerNav.style.display = "none";
+    } else { // Si le menu est ouvert, on le ferme
+      menu.style.display = "none";
       body.classList.remove("no-scroll"); // Réactiver le scroll
       body.style.marginRight = '0px'; // Retirer la compensation de la scrollbar
       burger.setAttribute('aria-expanded', 'false'); // Mettre à jour l'attribut aria-expanded
@@ -57,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Resizing event (reset)
   window.addEventListener("resize", function () {
     if (window.innerWidth > 680) {
-      headerNav.removeAttribute("style");
+      menu.removeAttribute("style");
       burger.classList.remove("is-cross");
       burger.setAttribute('aria-expanded', 'false'); // Réinitialisez l'attribut aria-expanded lors du redimensionnement
     }

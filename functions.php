@@ -15,6 +15,7 @@ function pe_enqueue_assets() {
   
   //  wp_localize_script() est un moyen efficace et propre de passer des données de PHP à JavaScript dans WP.
   wp_localize_script('gallery-ajax', 'frontendajax', array(
+    // 'ajaxurl' => admin_url('admin-ajax.php'), // Nous n'utilisons pas admin-ajax.php car nous nous servons de l'API Rest.
     'resturl' => esc_url_raw(rest_url('gallery/v1/photos/')),
     'nonce' => wp_create_nonce('wp_rest')
   ));

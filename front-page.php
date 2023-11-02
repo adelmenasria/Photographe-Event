@@ -5,7 +5,6 @@
 	<?php get_template_part('template-parts/front-page/hero'); ?>
 	<section class="container">
 		<?php get_template_part('template-parts/gallery/filters'); ?>
-
 		<div class="gallery">
 			<?php
 			$args = array(
@@ -25,7 +24,6 @@
 			endif;
 			?>
 		</div>
-
 		<button id="load-more" class="btn load-more">Charger plus</button>
 	</section>
 </main>
