@@ -1,10 +1,10 @@
-/* Fade-in */
+// Animations
+
 @keyframes fade-in {
   0% {opacity: 0;}
   100% {opacity: 1;}
 }
 
-/* Fade-out */
 @keyframes fade-out {
   100% {opacity: 0;}
   0% {opacity: 1;}

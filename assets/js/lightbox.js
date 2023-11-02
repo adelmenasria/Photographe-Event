@@ -16,7 +16,6 @@ jQuery(document).ready(function ($) {
     $('.lightbox .lightbox-reference').text(imgReference);
     $('.lightbox .lightbox-category').text(imgCategory);
 
-    // Ajout de la classe pour empêcher le défilement et afficher la lightbox
     $('body').addClass('no-scroll');
     $('.lightbox').addClass('lightbox-visible');
   });
@@ -31,8 +30,7 @@ jQuery(document).ready(function ($) {
     const nextLink = nextImage.find('.gallery-fullscreen');
     nextLink.click();
 
-    // Réajustement de la classe pour empêcher le défilement
-    $('body').removeClass('no-scroll').addClass('no-scroll');
+    $('body').removeClass('no-scroll').addClass('no-scroll'); // Réajustement de la classe pour empêcher le défilement
   });
 
   $(document).on('click', '.lightbox-prev', function () {
@@ -45,14 +43,11 @@ jQuery(document).ready(function ($) {
     const prevLink = prevImage.find('.gallery-fullscreen');
     prevLink.click();
 
-    // Réajustement de la classe pour empêcher le défilement
-    $('body').removeClass('no-scroll').addClass('no-scroll');
+    $('body').removeClass('no-scroll').addClass('no-scroll'); // Réajustement de la classe pour empêcher le défilement
   });
 
   $(document).on('click', '.lightbox-close', function () {
     $('.lightbox').removeClass('lightbox-visible');
-
-    // Suppression de la classe pour permettre le défilement
     $('body').removeClass('no-scroll');
   });
 });

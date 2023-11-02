@@ -22,8 +22,8 @@ function getScrollbarWidth() {
   return scrollbarWidth;
 }
 /**
- * Cette fonction nous sert à éviter le décalage provoqué par le bloquage du scroll (overflow:hidden) lorsque l'icone de menu burger est ouvert. 
- * En effet, lorsque le menu mobile est ouvert, la scrollbar disparaît et l'icone burger subit un décallage indésirable en conséquance. 
+ * Cette fonction nous sert à éviter le décalage provoqué par le bloquage du scroll (overflow:hidden) lorsque l'icone de menu burger est ouvert.
+ * En effet, lorsque le menu mobile est ouvert, la scrollbar disparaît et l'icone burger subit un décallage indésirable en conséquance.
  * Nous cherchons à obtenir la largeur de la scrollbar afin de pouvoir la resimuler lors de l'ouverture du menu, afin que l'icone du burger reste bien figée.
  **/
 
@@ -67,17 +67,24 @@ document.addEventListener("DOMContentLoaded", function () {
 const btnModalNav = document.querySelector(".toggler-modal-nav");
 const modal = document.getElementById("modal");
 
-// Open menu
+// Open modal with fade-in effect
 btnModalNav.onclick = function () {
+  modal.classList.add('fade-in');
   modal.style.display = "flex";
   body.classList.add("no-scroll");
 }
 
-// Close menu
-window.onclick = function (event) { // Using window.onclick to close the modal when clicking outside of it
+// Close modal with fade-out effect
+window.onclick = function (event) {
   if (event.target == modal) {
-    modal.style.display = "none";
-    body.classList.remove("no-scroll");
+    modal.classList.replace('fade-in', 'fade-out');
+
+    // Wait for the animation to finish before hiding the modal
+    modal.addEventListener('animationend', function() {
+      modal.style.display = "none";
+      modal.classList.remove('fade-out'); // Remove the class so it can be re-added next time the modal opens
+      body.classList.remove("no-scroll");
+    }, { once: true }); // The { once: true } option auto-removes the event listener after it's called
 
     // Reset reference field when modal is closed
     const refField = document.querySelector('input[name="photo-ref"]');
@@ -86,6 +93,7 @@ window.onclick = function (event) { // Using window.onclick to close the modal w
     }
   }
 }
+
 
 /*------------------------------------------*\
   Modal Single Photo (référence)
@@ -104,6 +112,7 @@ if (btnModalSingle) {
       }
     }
 
+    modal.classList.add('fade-in');
     modal.style.display = "flex";
     body.classList.add("no-scroll");
   });

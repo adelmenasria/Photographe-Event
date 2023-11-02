@@ -115,6 +115,31 @@ h1 {
   white-space: nowrap;
 }
 
+/* Animations */
+.fade-in {
+  animation: fade-in 0.3s forwards;
+}
+
+.fade-out {
+  animation: fade-out 0.3s forwards;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-out {
+  100% {
+    opacity: 0;
+  }
+  0% {
+    opacity: 1;
+  }
+}
 /* Layout */
 .row {
   display: flex;
@@ -203,9 +228,7 @@ h1 {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
-}
-
-/* Components */
+} /* Components */
 .btn {
   height: 50px;
   width: 272px;
@@ -307,11 +330,6 @@ h1 {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-#modal.show {
-  display: flex;
-  opacity: 1;
-}
-
 /* Modal Content */
 .modal-box {
   overflow: hidden;
@@ -365,24 +383,6 @@ h1 {
   background-color: #000;
 }
 
-/* Fade-in */
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-/* Fade-out */
-@keyframes fade-out {
-  100% {
-    opacity: 0;
-  }
-  0% {
-    opacity: 1;
-  }
-}
 /* Button Menu Mobile */
 .btn-menu-mobile {
   display: none;
@@ -473,7 +473,7 @@ h1 {
   position: relative;
   display: block;
   width: 22px;
-  height: 22px;
+  height: 24px;
 }
 
 .i-arrow-left::after,
@@ -505,7 +505,7 @@ h1 {
   position: relative;
   display: block;
   width: 22px;
-  height: 22px;
+  height: 24px;
 }
 
 .i-arrow-right::after,
@@ -592,8 +592,11 @@ h1 {
   border: none;
 }
 
-.lightbox-next {
+.lightbox-next,
+.lightbox-prev {
   z-index: 1;
+  display: flex;
+  gap: 5px;
   bottom: 50%;
   right: 10px;
   background-color: transparent;
@@ -601,11 +604,7 @@ h1 {
 }
 
 .lightbox-prev {
-  z-index: 1;
-  bottom: 50%;
   left: 10px;
-  background-color: transparent;
-  border: none;
 }
 
 .lightbox-content {
